@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		4515B3AB1F78F96400D87B4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515B3AA1F78F96400D87B4F /* AppDelegate.swift */; };
-		4515B3AD1F78F96400D87B4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515B3AC1F78F96400D87B4F /* ViewController.swift */; };
 		4515B3B01F78F96400D87B4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4515B3AE1F78F96400D87B4F /* Main.storyboard */; };
 		4515B3B21F78F96400D87B4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4515B3B11F78F96400D87B4F /* Assets.xcassets */; };
 		4515B3B51F78F96400D87B4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4515B3B31F78F96400D87B4F /* LaunchScreen.storyboard */; };
+		4515B3C11F78F9E200D87B4F /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515B3C01F78F9E200D87B4F /* Restaurant.swift */; };
+		4515B3C31F78FA6E00D87B4F /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515B3C21F78FA6E00D87B4F /* RestaurantTableViewController.swift */; };
+		4515B3C51F78FBF300D87B4F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515B3C41F78FBF300D87B4F /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4515B3A71F78F96400D87B4F /* GetDirection+DrawRoute.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GetDirection+DrawRoute.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4515B3AA1F78F96400D87B4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4515B3AC1F78F96400D87B4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4515B3AF1F78F96400D87B4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4515B3B11F78F96400D87B4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4515B3B41F78F96400D87B4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4515B3B61F78F96400D87B4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4515B3C01F78F9E200D87B4F /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		4515B3C21F78FA6E00D87B4F /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
+		4515B3C41F78FBF300D87B4F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,48 @@
 		4515B3A91F78F96400D87B4F /* GetDirection+DrawRoute */ = {
 			isa = PBXGroup;
 			children = (
-				4515B3AA1F78F96400D87B4F /* AppDelegate.swift */,
-				4515B3AC1F78F96400D87B4F /* ViewController.swift */,
-				4515B3AE1F78F96400D87B4F /* Main.storyboard */,
-				4515B3B11F78F96400D87B4F /* Assets.xcassets */,
-				4515B3B31F78F96400D87B4F /* LaunchScreen.storyboard */,
-				4515B3B61F78F96400D87B4F /* Info.plist */,
+				4515B3BC1F78F97400D87B4F /* Resources */,
+				4515B3BF1F78F9BD00D87B4F /* Model */,
+				4515B3BD1F78F98400D87B4F /* View */,
+				4515B3BE1F78F98A00D87B4F /* Controller */,
 			);
 			path = "GetDirection+DrawRoute";
+			sourceTree = "<group>";
+		};
+		4515B3BC1F78F97400D87B4F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4515B3B11F78F96400D87B4F /* Assets.xcassets */,
+				4515B3B61F78F96400D87B4F /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4515B3BD1F78F98400D87B4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4515B3B31F78F96400D87B4F /* LaunchScreen.storyboard */,
+				4515B3AE1F78F96400D87B4F /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4515B3BE1F78F98A00D87B4F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4515B3AA1F78F96400D87B4F /* AppDelegate.swift */,
+				4515B3C21F78FA6E00D87B4F /* RestaurantTableViewController.swift */,
+				4515B3C41F78FBF300D87B4F /* MapViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4515B3BF1F78F9BD00D87B4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4515B3C01F78F9E200D87B4F /* Restaurant.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,8 +174,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4515B3AD1F78F96400D87B4F /* ViewController.swift in Sources */,
 				4515B3AB1F78F96400D87B4F /* AppDelegate.swift in Sources */,
+				4515B3C11F78F9E200D87B4F /* Restaurant.swift in Sources */,
+				4515B3C31F78FA6E00D87B4F /* RestaurantTableViewController.swift in Sources */,
+				4515B3C51F78FBF300D87B4F /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +316,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9H46LQG73T;
-				INFOPLIST_FILE = "GetDirection+DrawRoute/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GetDirection+DrawRoute/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DevXris.GetDirection-DrawRoute";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -291,7 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9H46LQG73T;
-				INFOPLIST_FILE = "GetDirection+DrawRoute/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/GetDirection+DrawRoute/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DevXris.GetDirection-DrawRoute";
 				PRODUCT_NAME = "$(TARGET_NAME)";
