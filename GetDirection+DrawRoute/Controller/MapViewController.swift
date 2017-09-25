@@ -23,6 +23,7 @@ class MapViewController: UIViewController {
 	}
 	
 	var restaurant: Restaurant!
+	var currentPlacemark: CLPlacemark?
 	
 	private func geoCode(from restaurant: Restaurant) {
 		// Convert address to coordinate and annotate it on map
@@ -34,6 +35,7 @@ class MapViewController: UIViewController {
 			
 			// get the first placemark
 			let placemark = placemarks[0]
+			self?.currentPlacemark = placemark
 			// add annotation
 			let annotation = MKPointAnnotation()
 			annotation.title = restaurant.name
@@ -84,6 +86,29 @@ class MapViewController: UIViewController {
 	}
 	
 	@IBAction func showDirection(_ sender: UIButton) {
+		
+		guard let currentPlacemark = currentPlacemark else { return }
+		
+		// configure directionRequest
+		let directionRequest = MKDirectionsRequest()
+		directionRequest.source = MKMapItem.forCurrentLocation()
+		let destinationPlacemark = MKPlacemark(placemark: currentPlacemark)
+		directionRequest.destination = MKMapItem(placemark: destinationPlacemark)
+		directionRequest.transportType = .automobile
+		
+		// calculate the direction
+		let directions = MKDirections(request: directionRequest)
+		directions.calculate { (routeResponse, routeError) in
+			guard let response = routeResponse else {
+				if let error = routeError {
+					print(error.localizedDescription)
+				}
+				return
+			}
+			let route = response.routes[0]
+			// add route on the mapView
+			self.mapView.add(route.polyline, level: .aboveRoads) // need to implement delegate method
+		}
 	}
 }
 
@@ -112,5 +137,12 @@ extension MapViewController: MKMapViewDelegate {
 		}
 		
 		return annotationView
+	}
+	
+	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+		let renderer = MKPolylineRenderer(overlay: overlay)
+		renderer.lineWidth = 3.0
+		renderer.strokeColor = .blue
+		return renderer
 	}
 }
