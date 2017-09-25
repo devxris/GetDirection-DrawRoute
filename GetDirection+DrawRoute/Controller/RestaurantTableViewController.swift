@@ -48,4 +48,13 @@ class RestaurantTableViewController: UITableViewController {
 		cell.imageView?.image = UIImage(named: restaurant.image)
 		return cell
 	}
+	
+	// MARK: Navigation
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "ShowMap" {
+			guard let destinationController = segue.destination as? MapViewController else { return }
+			guard let selectedPath = tableView.indexPathForSelectedRow else { return }
+			destinationController.restaurant = restaurants[selectedPath.row]
+		}
+	}
 }

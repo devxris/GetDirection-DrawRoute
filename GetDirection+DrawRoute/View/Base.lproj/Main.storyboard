@@ -26,7 +26,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="9QU-dg-DJd" kind="showDetail" id="qbW-TU-9VC"/>
+                                    <segue destination="9QU-dg-DJd" kind="showDetail" identifier="ShowMap" id="qbW-TU-9VC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
