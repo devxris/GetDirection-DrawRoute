@@ -57,4 +57,8 @@ class RestaurantTableViewController: UITableViewController {
 			destinationController.restaurant = restaurants[selectedPath.row]
 		}
 	}
+	
+	@IBAction func unwind(segue: UIStoryboardSegue) {
+		dismiss(animated: true, completion: nil)
+	}
 }

@@ -50,6 +50,40 @@ class MapViewController: UIViewController {
 		super.viewDidLoad()
 		
 		geoCode(from: restaurant)
+		accessLocationAuthorization { (granted) in
+			if granted {
+				mapView.showsUserLocation = true // need authorization
+			}
+		}
+	}
+	
+	let locationManager = CLLocationManager()
+	
+	private func accessLocationAuthorization(completion: (_ granted: Bool) ->()) {
+		let status = CLLocationManager.authorizationStatus()
+		switch status {
+		case .authorizedWhenInUse: completion(true)
+		case .notDetermined, .denied:
+			locationManager.requestWhenInUseAuthorization()
+			if status == .denied { DispatchQueue.main.async { self.remindUserToAuthorize() } }
+		case .restricted : completion(false)
+		default: break
+		}
+	}
+	
+	private func remindUserToAuthorize() {
+		let alert = UIAlertController(title: "Need your authorization", message: "Please authorized to use your current location.", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Go to Settings", style: .default, handler: { (action) in
+			guard let settingsURL = URL(string: UIApplicationOpenSettingsURLString) else { return }
+			if UIApplication.shared.canOpenURL(settingsURL) {
+				UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+			}
+		}))
+		alert.addAction(UIAlertAction(title: "Later", style: .cancel, handler: nil))
+		present(alert, animated: true, completion: nil)
+	}
+	
+	@IBAction func showDirection(_ sender: UIButton) {
 	}
 }
 
