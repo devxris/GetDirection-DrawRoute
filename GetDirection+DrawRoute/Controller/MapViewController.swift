@@ -25,6 +25,13 @@ class MapViewController: UIViewController {
 	var restaurant: Restaurant!
 	var currentPlacemark: CLPlacemark?
 	
+	@IBOutlet weak var segmentedControl: UISegmentedControl! {
+		didSet {
+			segmentedControl.addTarget(self, action: #selector(self.showDirection(_:)), for: .valueChanged)
+		}
+	}
+	var currentTransportType = MKDirectionsTransportType.automobile
+	
 	private func geoCode(from restaurant: Restaurant) {
 		// Convert address to coordinate and annotate it on map
 		let geoCoder = CLGeocoder()
@@ -57,6 +64,8 @@ class MapViewController: UIViewController {
 				mapView.showsUserLocation = true // need authorization
 			}
 		}
+		
+		segmentedControl.isHidden = true
 	}
 	
 	let locationManager = CLLocationManager()
@@ -87,6 +96,14 @@ class MapViewController: UIViewController {
 	
 	@IBAction func showDirection(_ sender: UIButton) {
 		
+		// display segmented control
+		segmentedControl.isHidden = false
+		switch segmentedControl.selectedSegmentIndex {
+		case 0 : currentTransportType = .automobile
+		case 1 : currentTransportType = .walking
+		default: break
+		}
+		
 		guard let currentPlacemark = currentPlacemark else { return }
 		
 		// configure directionRequest
@@ -94,7 +111,7 @@ class MapViewController: UIViewController {
 		directionRequest.source = MKMapItem.forCurrentLocation()
 		let destinationPlacemark = MKPlacemark(placemark: currentPlacemark)
 		directionRequest.destination = MKMapItem(placemark: destinationPlacemark)
-		directionRequest.transportType = .automobile
+		directionRequest.transportType = currentTransportType
 		
 		// calculate the direction
 		let directions = MKDirections(request: directionRequest)
@@ -106,6 +123,8 @@ class MapViewController: UIViewController {
 				return
 			}
 			let route = response.routes[0]
+			// remove previous overlays in advance
+			self.mapView.removeOverlays(self.mapView.overlays)
 			// add route on the mapView
 			self.mapView.add(route.polyline, level: .aboveRoads) // need to implement delegate method
 			
@@ -146,7 +165,7 @@ extension MapViewController: MKMapViewDelegate {
 	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 		let renderer = MKPolylineRenderer(overlay: overlay)
 		renderer.lineWidth = 3.0
-		renderer.strokeColor = .blue
+		renderer.strokeColor = currentTransportType == .automobile ? .blue : .orange
 		return renderer
 	}
 }

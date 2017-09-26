@@ -72,13 +72,23 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tox-v0-Qys">
+                                <rect key="frame" x="270" y="750" width="89" height="29"/>
+                                <segments>
+                                    <segment title="Car"/>
+                                    <segment title="Walk"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="D0e-vD-36i" firstAttribute="trailing" secondItem="sFJ-8r-bLj" secondAttribute="trailing" constant="15" id="3v7-hk-fEk"/>
                             <constraint firstItem="sFJ-8r-bLj" firstAttribute="top" secondItem="Dj2-0b-I2o" secondAttribute="top" constant="40" id="B9w-Tk-V9O"/>
                             <constraint firstItem="6SX-nS-XYP" firstAttribute="top" secondItem="Dj2-0b-I2o" secondAttribute="top" id="CVH-T0-1Kc"/>
+                            <constraint firstItem="D0e-vD-36i" firstAttribute="trailing" secondItem="tox-v0-Qys" secondAttribute="trailing" constant="16" id="Cfi-hC-td9"/>
+                            <constraint firstItem="tox-v0-Qys" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dj2-0b-I2o" secondAttribute="leading" constant="20" symbolic="YES" id="FV5-cG-2TJ"/>
                             <constraint firstAttribute="trailing" secondItem="6SX-nS-XYP" secondAttribute="trailing" id="TbO-n3-BMV"/>
+                            <constraint firstItem="D0e-vD-36i" firstAttribute="bottom" secondItem="tox-v0-Qys" secondAttribute="bottom" id="VNp-E1-TtG"/>
                             <constraint firstItem="6SX-nS-XYP" firstAttribute="leading" secondItem="Dj2-0b-I2o" secondAttribute="leading" id="vCj-xY-VjY"/>
                             <constraint firstAttribute="bottom" secondItem="6SX-nS-XYP" secondAttribute="bottom" id="vSF-1N-UR9"/>
                         </constraints>
@@ -86,6 +96,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="6SX-nS-XYP" id="0jm-gU-o5O"/>
+                        <outlet property="segmentedControl" destination="tox-v0-Qys" id="DSg-2m-gQw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQG-TN-w5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
