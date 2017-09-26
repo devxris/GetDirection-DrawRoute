@@ -123,6 +123,7 @@ class MapViewController: UIViewController {
 				}
 				return
 			}
+			// get routes from response
 			let route = response.routes[0]
 			// add route to current route
 			self.currentRoute = route
@@ -140,9 +141,9 @@ class MapViewController: UIViewController {
 	// MARK: Navigation
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowSteps" {
-			guard let routeTVC = segue.destination.contentViewController as? RouteTableViewController else { return }
+			guard let routeTableViewController = segue.destination.contentViewController as? RouteTableViewController else { return }
 			guard let steps = currentRoute?.steps else { return }
-			routeTVC.routeSteps = steps
+			routeTableViewController.routeSteps = steps
 		}
 	}
 }
