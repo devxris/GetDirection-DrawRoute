@@ -14,6 +14,7 @@
 		4515B3C11F78F9E200D87B4F /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515B3C01F78F9E200D87B4F /* Restaurant.swift */; };
 		4515B3C31F78FA6E00D87B4F /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515B3C21F78FA6E00D87B4F /* RestaurantTableViewController.swift */; };
 		4515B3C51F78FBF300D87B4F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4515B3C41F78FBF300D87B4F /* MapViewController.swift */; };
+		459615F21F7A03DB00E7164D /* RouteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459615F11F7A03DB00E7164D /* RouteTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4515B3C01F78F9E200D87B4F /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		4515B3C21F78FA6E00D87B4F /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
 		4515B3C41F78FBF300D87B4F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		459615F11F7A03DB00E7164D /* RouteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 				4515B3AA1F78F96400D87B4F /* AppDelegate.swift */,
 				4515B3C21F78FA6E00D87B4F /* RestaurantTableViewController.swift */,
 				4515B3C41F78FBF300D87B4F /* MapViewController.swift */,
+				459615F11F7A03DB00E7164D /* RouteTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				459615F21F7A03DB00E7164D /* RouteTableViewController.swift in Sources */,
 				4515B3AB1F78F96400D87B4F /* AppDelegate.swift in Sources */,
 				4515B3C11F78F9E200D87B4F /* Restaurant.swift in Sources */,
 				4515B3C31F78FA6E00D87B4F /* RestaurantTableViewController.swift in Sources */,

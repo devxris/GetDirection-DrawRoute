@@ -31,6 +31,7 @@ class MapViewController: UIViewController {
 		}
 	}
 	var currentTransportType = MKDirectionsTransportType.automobile
+	var currentRoute: MKRoute?
 	
 	private func geoCode(from restaurant: Restaurant) {
 		// Convert address to coordinate and annotate it on map
@@ -123,6 +124,8 @@ class MapViewController: UIViewController {
 				return
 			}
 			let route = response.routes[0]
+			// add route to current route
+			self.currentRoute = route
 			// remove previous overlays in advance
 			self.mapView.removeOverlays(self.mapView.overlays)
 			// add route on the mapView
@@ -132,6 +135,22 @@ class MapViewController: UIViewController {
 			let rect = route.polyline.boundingMapRect
 			self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
 		}
+	}
+	
+	// MARK: Navigation
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "ShowSteps" {
+			guard let routeTVC = segue.destination.contentViewController as? RouteTableViewController else { return }
+			guard let steps = currentRoute?.steps else { return }
+			routeTVC.routeSteps = steps
+		}
+	}
+}
+
+extension UIViewController {
+	var contentViewController: UIViewController? {
+		guard let naviController = self as? UINavigationController else { return self }
+		return naviController.visibleViewController ?? self
 	}
 }
 
@@ -159,6 +178,9 @@ extension MapViewController: MKMapViewDelegate {
 			annotationView?.pinTintColor = .orange
 		}
 		
+		// Configure rightCalloutAccessoryView to show route steps
+		annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+		
 		return annotationView
 	}
 	
@@ -167,5 +189,9 @@ extension MapViewController: MKMapViewDelegate {
 		renderer.lineWidth = 3.0
 		renderer.strokeColor = currentTransportType == .automobile ? .blue : .orange
 		return renderer
+	}
+	
+	func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+		performSegue(withIdentifier: "ShowSteps", sender: view)
 	}
 }
