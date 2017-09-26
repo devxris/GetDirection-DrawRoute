@@ -108,6 +108,10 @@ class MapViewController: UIViewController {
 			let route = response.routes[0]
 			// add route on the mapView
 			self.mapView.add(route.polyline, level: .aboveRoads) // need to implement delegate method
+			
+			// scale the map to fit the route perfectly
+			let rect = route.polyline.boundingMapRect
+			self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
 		}
 	}
 }
