@@ -40,7 +40,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U03-6n-aUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="248.80000000000001" y="116.49175412293854"/>
+            <point key="canvasLocation" x="311" y="117"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="sXV-Pv-a0o">
@@ -79,6 +79,22 @@
                                     <segment title="Walk"/>
                                 </segments>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vog-ce-QFl">
+                                <rect key="frame" x="16" y="748" width="54" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.69803921570000005" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="NearBy">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="showNearby:" destination="9QU-dg-DJd" eventType="touchUpInside" id="jqP-WX-Igd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -89,6 +105,9 @@
                             <constraint firstItem="tox-v0-Qys" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dj2-0b-I2o" secondAttribute="leading" constant="20" symbolic="YES" id="FV5-cG-2TJ"/>
                             <constraint firstAttribute="trailing" secondItem="6SX-nS-XYP" secondAttribute="trailing" id="TbO-n3-BMV"/>
                             <constraint firstItem="D0e-vD-36i" firstAttribute="bottom" secondItem="tox-v0-Qys" secondAttribute="bottom" id="VNp-E1-TtG"/>
+                            <constraint firstItem="Vog-ce-QFl" firstAttribute="bottom" secondItem="D0e-vD-36i" secondAttribute="bottom" id="aQ8-rv-cFm"/>
+                            <constraint firstItem="Vog-ce-QFl" firstAttribute="leading" secondItem="D0e-vD-36i" secondAttribute="leading" constant="16" id="eQo-fb-VKt"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vog-ce-QFl" secondAttribute="trailing" constant="20" symbolic="YES" id="uDO-XW-0Gg"/>
                             <constraint firstItem="6SX-nS-XYP" firstAttribute="leading" secondItem="Dj2-0b-I2o" secondAttribute="leading" id="vCj-xY-VjY"/>
                             <constraint firstAttribute="bottom" secondItem="6SX-nS-XYP" secondAttribute="bottom" id="vSF-1N-UR9"/>
                         </constraints>
@@ -103,7 +122,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KQG-TN-w5M" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="g3G-UN-5t7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="908" y="115.27093596059113"/>
+            <point key="canvasLocation" x="983" y="117"/>
         </scene>
         <!--Steps-->
         <scene sceneID="aBo-O4-ny4">
@@ -138,7 +157,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yyE-1j-2y7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2194" y="115"/>
+            <point key="canvasLocation" x="2351" y="117"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HLB-8a-RED">
@@ -174,7 +193,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dz5-j0-SYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1513" y="116"/>
+            <point key="canvasLocation" x="1689" y="117"/>
         </scene>
     </scenes>
     <resources>

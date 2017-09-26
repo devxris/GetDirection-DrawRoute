@@ -138,6 +138,36 @@ class MapViewController: UIViewController {
 		}
 	}
 	
+	@IBAction func showNearby(_ sender: UIButton) {
+		
+		// Configure MKLocationSearchRequest
+		let searchRequest = MKLocalSearchRequest()
+		searchRequest.naturalLanguageQuery = restaurant.type
+		searchRequest.region = mapView.region
+		
+		// Start MKLocalSearch
+		let search = MKLocalSearch(request: searchRequest)
+		search.start { (response, error) in
+			guard let response = response else { if let error = error { print(error) }; return }
+			// Get mapItems from response
+			let mapItems = response.mapItems
+			var nearbyAnnotations: [MKAnnotation] = []
+			guard mapItems.count > 0 else { return }
+			mapItems.forEach { (item) in
+				// Configure each annotation
+				let annotation = MKPointAnnotation()
+				annotation.title = item.name
+				annotation.subtitle = item.phoneNumber
+				if let location = item.placemark.location {
+					annotation.coordinate = location.coordinate
+				}
+				nearbyAnnotations.append(annotation)
+			}
+			// show the annotations
+			self.mapView.showAnnotations(nearbyAnnotations, animated: true)
+		}
+	}
+	
 	// MARK: Navigation
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "ShowSteps" {
@@ -169,14 +199,19 @@ extension MapViewController: MKMapViewDelegate {
 			annotationView?.canShowCallout = true
 		}
 		
-		// Configure leftCalloutAccessoryView
-		let leftIconView = UIImageView(frame: CGRect(x: 0, y: 0, width: 53, height: 53))
-		leftIconView.image = UIImage(named: restaurant.image)
-		annotationView?.leftCalloutAccessoryView = leftIconView
-		
-		// Pin color customization
-		if #available(iOS 9.0, *) {
-			annotationView?.pinTintColor = .orange
+		// Pin color customization based on type of annotation
+		if let currentPlacemarkCoordinate = currentPlacemark?.location?.coordinate {
+			if currentPlacemarkCoordinate.latitude == annotation.coordinate.latitude &&
+				currentPlacemarkCoordinate.longitude == annotation.coordinate.longitude {
+				// Configure leftCalloutAccessoryView
+				let leftIconView = UIImageView(frame: CGRect(x: 0, y: 0, width: 53, height: 53))
+				leftIconView.image = UIImage(named: restaurant.image)
+				annotationView?.leftCalloutAccessoryView = leftIconView
+				// Customize pin color
+				if #available(iOS 9.0, *) { annotationView?.pinTintColor = .orange }
+			} else {
+				if #available(iOS 9.0, *) { annotationView?.pinTintColor = .red }
+			}
 		}
 		
 		// Configure rightCalloutAccessoryView to show route steps
